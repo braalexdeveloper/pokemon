@@ -1,0 +1,20 @@
+.divFilter{
+    width: 30%;
+}
+
+.divFilter span{
+    color:white;
+    margin-right: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.select{
+    background-color: #ccc;
+    color:#2b5eaf;
+    font-weight: bold;
+    width: 50%;
+    height: 30px;
+    font-size: 1rem;
+    text-align: center;
+}

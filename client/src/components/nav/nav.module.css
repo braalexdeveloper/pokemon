@@ -1,0 +1,39 @@
+.nav {
+    background-color: #f7c611;
+    padding-top: 0.4rem;
+}
+
+.container {
+    width: 1200px;
+
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: 200px;
+}
+
+
+
+.btnCreatePokemon{
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    background-color: #148f39;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.btnCreatePokemon:hover {
+    background-color: #0d6815;
+    color: rgb(168, 167, 165)
+}
+

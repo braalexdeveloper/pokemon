@@ -1,0 +1,33 @@
+
+.fondo{
+    background: url(../../img/f4.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: 100%;
+    
+}
+
+
+
+.btnEntrar{
+    position:absolute;
+    cursor: pointer;
+    background-color:#2b5eaf;
+    color:white;
+    border:3px solid #f7c611;
+    padding: 0.25rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    top: 55%;
+    left: 35%;
+    transition: all 300ms;
+    
+}
+
+.btnEntrar:hover{
+    background-color:#f7c611;
+    color:#2b5eaf;
+}

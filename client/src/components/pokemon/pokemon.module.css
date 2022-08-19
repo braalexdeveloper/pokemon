@@ -1,0 +1,27 @@
+.card{
+    border:1px solid #f7c611;
+    width: 250px;
+    margin-bottom: 1.3rem;
+    cursor:pointer;
+    transition: all 500ms;
+}
+.card:hover{
+    background-color:#f7c611;
+}
+
+.card img{
+    width: 90%;
+}
+
+.title_card{
+    color:#2b5eaf;
+    text-transform: uppercase;
+}
+
+.container_types{
+ padding: 0.5rem 0px;
+ text-transform: uppercase;
+ display: flex;
+ justify-content:space-around;
+ color:rgb(44, 43, 43)
+}
