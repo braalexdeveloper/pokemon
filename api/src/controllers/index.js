@@ -2,6 +2,9 @@ const axios = require('axios');
 //const Pokemon = require('../models/Pokemon');
 const { Pokemon, Tipo } = require('../db.js');
 
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 const pokemonsApi = async () => {
     const info = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40')
         .then(res => res.data)
@@ -108,6 +111,39 @@ const getNamePokemonApi = async (name) => {
     
 }
 
+const getNamePokemonBD = async (nombre) => {
+  const pokemons= await Pokemon.findAll({
+    where:{
+      name: {
+      [Op.like]: '%'+nombre+'%'
+    }
+    },
+    include:{
+        model:Tipo,
+        attributes:["name"],
+        through:{
+            attributes:[],
+        }
+    }
+   });
+
+
+  return pokemons.map(p => {
+        return {
+            id:p.id,
+            name:p.name,
+            types:p.tipos.map(t => t.name),
+            attack:p.attack,
+            image:p.image,
+            fromDB:p.fromDB
+        }
+        
+    })
+
+
+
+}
+
 const getPokemonBd = async (idPokemon) => {
     let pokemonBD = await Pokemon.findOne({
         where: {
@@ -188,5 +224,6 @@ module.exports = {
     getNamePokemonApi,
     getPokemonBd,
     getTypes,
-    postPokemon
+    postPokemon,
+    getNamePokemonBD
 };

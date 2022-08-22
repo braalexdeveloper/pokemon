@@ -16,6 +16,7 @@ const Pokemons = (props) => {
   const dispatch = useDispatch();
 
   const [pagina, setPagina] = useState(1);
+  const [inputPag,setInputPag]=useState(1);
   const [porPagina, setPorPagina] = useState(12);
 
   const [orden, setOrden] = useState("")
@@ -38,12 +39,18 @@ const Pokemons = (props) => {
           dispatch(getAllPokemons())
       }*/
       setInput(e.target.value)
+      
   }
+
+  
 
   const handleSearch = (e) => {
      // e.preventDefault();
       dispatch(searchName(input))
       setInput('')
+      
+      setInputPag(1)
+      setPagina(1)
   }
 
   const allPokemons = () => {
@@ -57,13 +64,13 @@ const Pokemons = (props) => {
           <input onChange={(e) => handleInput(e)} value={input} className={styles.inputSearch} type="text" name="search" />
 
           <button onClick={(e) => handleSearch(e)} className={styles.btnSearch}>SEARCH</button>
-          <button onClick={allPokemons} className={styles.btnAllPokemons}>ALL POKEMONS</button>
+          <button onClick={allPokemons} className={styles.btnAllPokemons}>CLEAR FILTERS</button>
         </div>
         <div className={styles.sectionFilters}>
-          <FilterOrder setPagina={setPagina} setOrden={setOrden} />
+          <FilterOrder setInputPag={setInputPag} setPagina={setPagina} setOrden={setOrden} />
         </div>
         <div>
-          { !loader ? <Pagination pagina={pagina} setPagina={setPagina} numMaxPag={numMaxPag} /> : null}
+          { !loader ? <Pagination inputPag={inputPag} setInputPag={setInputPag} pagina={pagina} setPagina={setPagina} numMaxPag={numMaxPag} /> : null}
           
         </div>
       </section>

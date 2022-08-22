@@ -4,7 +4,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const { allPokemons, getPokemonApi,
-  getPokemonBd, getTypes, postPokemon,getNamePokemonApi,pokemonsDB } = require('../controllers/index.js');
+  getPokemonBd, getTypes, postPokemon,getNamePokemonApi,pokemonsDB,getNamePokemonBD } = require('../controllers/index.js');
 
 const router = Router();
 
@@ -21,11 +21,12 @@ router.get('/pokemons', async (req, res) => {
     if (name) {
 
 
-        let pokemon = await pokemonsDB().then((res) =>
+        /*let pokemon = await pokemonsDB().then((res) =>
         res.filter(
-          (p) => p.name.toLowerCase().trim() === name.toLowerCase().trim()
+          (p) => p.name.toLowerCase().trim().includes(name.toLowerCase().trim()) 
         )
-      );
+      );*/
+      let pokemon=await getNamePokemonBD(name);
                
         if(pokemon.length > 0){ 
           return res.status(200).json(pokemon)

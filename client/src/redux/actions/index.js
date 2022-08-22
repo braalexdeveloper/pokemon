@@ -63,6 +63,7 @@ export const getAllTypes = () => async (dispatch) => {
 }
 
 export const searchName = (name) => async (dispatch) => {
+    dispatch({type:LOADER,payload:true})
     return await fetch(baseUrl+'/pokemons?name=' + name)
         .then(r => r.json())
         .then(data => {
@@ -70,6 +71,7 @@ export const searchName = (name) => async (dispatch) => {
                 type: SEARCH_NAME,
                 payload: data
             })
+            dispatch({type:LOADER,payload:false})
         })
 }
 

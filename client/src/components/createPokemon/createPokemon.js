@@ -11,10 +11,9 @@ function validate(input) {
     let errors = {};
     const pattern = new RegExp('^[A-Z]+$', 'i');
 
-    /*if (!input.name) {
+    if (!input.name) {
         errors.name = 'Este campo es obligatorio';
-    }*/
-    if (!pattern.test(input.name)) {
+    }else if (!pattern.test(input.name)) {
         errors.name = 'No se aceptan números'
     }
 
@@ -55,7 +54,7 @@ const CreatePokemon = () => {
         speed: '',
         height: '',
         weight: '',
-        types: []
+        types:[]
     });
 
     const [errors, setErrors] = useState({});
@@ -83,13 +82,20 @@ const CreatePokemon = () => {
     const handleSelected = (e) => {
         setInput({
             ...input,
-            types: [...input.types, e.target.value]
+            types: [...new Set([...input.types, e.target.value])]//input.types.includes(e.target.value) ? input.types : [...input.types, e.target.value]
         })
 
         setErrors(validate({
             ...input,
             types: [...input.types, e.target.value]
         }))
+    }
+
+    function deleteType(type){
+        setInput({
+            ...input,
+            types:input.types.filter(el => el !== type)
+        })
     }
 
     const handleSubmit = (e) => {
@@ -203,8 +209,8 @@ const CreatePokemon = () => {
                     <h3>{input.name ? input.name : "name"}</h3>
                     <div className={styles.divTypes}>
                         {input.types.length > 0 ? input.types.map(el => (
-                            <span>{el}</span>
-                        )) : <span>Types</span>}
+                            <div className={styles.divType}>{el} <button className={styles.btnDeleteType} onClick={() => deleteType(el)}>x</button></div>
+                        )) : <span className={styles.divType}>Types</span>}
 
                     </div>
                 </div>

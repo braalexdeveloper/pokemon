@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllTypes, filterType, filterExistDB,orderName } from "../../redux/actions";
 import styles from "./filterOrder.module.css";
 
-const FilterOrder = ({setPagina, setOrden}) => {
+const FilterOrder = ({setInputPag,setPagina, setOrden}) => {
   const dispatch = useDispatch();
   const infoTypes = useSelector(state => state.types);
 
@@ -15,15 +15,20 @@ const FilterOrder = ({setPagina, setOrden}) => {
 
   const handleFilterType = (e) => {
     dispatch(filterType(e.target.value))
+    setPagina(1)
+    setInputPag(1)
   }
 
   const handleFilterExistDb = (e) => {
     dispatch(filterExistDB(e.target.value))
+    setPagina(1)
+    setInputPag(1)
   }
 
   const handleOrderName=(e)=>{
   dispatch(orderName(e.target.value));
-  //setPagina(1);
+  setPagina(1);
+  setInputPag(1)
   setOrden(`ordenado ${e.target.value}`)
   }
 
