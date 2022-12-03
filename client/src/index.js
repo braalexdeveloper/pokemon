@@ -7,9 +7,9 @@ import {Provider} from 'react-redux';
 import { BrowserRouter as Router } from "react-router-dom";
 import store from "./redux/store";
 
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
 
-dotenv.config();
+//dotenv.config();
 
 ReactDOM.render(
  // <React.StrictMode>
